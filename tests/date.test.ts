@@ -8,6 +8,7 @@ import {
   monthGrid,
   nextEvent,
   progress,
+  isoToKSTDate,
   todayKST,
   upcomingEvents,
 } from "@/lib/date";
@@ -131,5 +132,15 @@ describe("labels", () => {
   });
   it("formatKoreanDate", () => {
     expect(formatKoreanDate("2026-11-12")).toBe("11월 12일 (목)");
+  });
+});
+
+describe("isoToKSTDate", () => {
+  it.each([
+    ["2026-11-05T16:00:00Z", "2026-11-06"],
+    ["2026-11-05T14:59:59Z", "2026-11-05"],
+    ["2026-12-31T15:00:00Z", "2027-01-01"],
+  ])("%s -> %s", (iso, want) => {
+    expect(isoToKSTDate(iso)).toBe(want);
   });
 });

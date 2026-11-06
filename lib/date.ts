@@ -17,6 +17,11 @@ export function todayKST(now: Date = new Date()): string {
   return fmt(now.getTime() + 9 * 3_600_000);
 }
 
+/** ISO 시각 문자열(UTC 등)을 Asia/Seoul 기준 YYYY-MM-DD로 */
+export function isoToKSTDate(iso: string): string {
+  return todayKST(new Date(iso));
+}
+
 /** to - from, 일 단위 */
 export function daysBetween(from: string, to: string): number {
   return Math.round((toUTC(to) - toUTC(from)) / MS_DAY);

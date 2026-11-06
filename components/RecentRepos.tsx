@@ -1,4 +1,5 @@
 import type { RepoSummary } from "@/lib/github";
+import { isoToKSTDate } from "@/lib/date";
 
 export default function RecentRepos({ repos }: { repos: RepoSummary[] | null }) {
   if (repos === null) {
@@ -16,7 +17,7 @@ export default function RecentRepos({ repos }: { repos: RepoSummary[] | null }) 
               <span className="truncate text-sm font-bold">{r.name}</span>
               <span className="shrink-0 text-xs text-muted">
                 {r.language ? `${r.language} · ` : ""}
-                {r.pushedAt.slice(0, 10)}
+                {isoToKSTDate(r.pushedAt)}
               </span>
             </span>
             {r.description && <span className="block truncate text-xs text-muted">{r.description}</span>}
