@@ -1,0 +1,72 @@
+// 대회 데이터. 여기만 수정하면 된다 (스키마 검증은 lib/schema.ts가 빌드 시 수행).
+export const rawContests = [
+  {
+    id: "kic-ai-agent",
+    name: "KIC AI 에이전트 공모전",
+    host: "한국투자공사(KIC) · 데이콘",
+    url: "https://daker.ai/public/hackathons/kic-ai-agent-competition",
+    category: "AI 에이전트",
+    stage: "제출완료",
+    prize: "총 1,500만 원",
+    events: [
+      { title: "상호평가", date: "2026-11-12", end: "2026-11-19" },
+      { title: "본선 진출 발표", date: "2026-12-03" },
+      { title: "본선 제출 마감", date: "2026-12-22" },
+      { title: "온라인 발표", date: "2026-12-29" },
+      { title: "최종 결과 발표", date: "2027-01-11" },
+    ],
+    tasks: [
+      { title: "기획서 제출", done: true },
+      { title: "상호평가 참여", done: false },
+      { title: "본선 결과물 제출", done: false },
+      { title: "온라인 발표", done: false },
+    ],
+  },
+  {
+    id: "hana-finance-idea",
+    name: "제1회 하나증권 청년 금융아이디어 공모전",
+    host: "하나증권",
+    url: "https://linkareer.com/activity/360963",
+    category: "금융 아이디어",
+    stage: "제출완료",
+    prize: "총 1,800만 원 (대상 500만 원)",
+    notes: "입상 시 하나증권 신입 채용 서류 면제",
+    events: [
+      { title: "본선 진출 10명 발표", date: "2026-12-11" },
+      { title: "본선 PT·시상식", date: "2026-12-23" },
+    ],
+    tasks: [
+      { title: "아이디어 제출", done: true },
+      { title: "본선 PT 준비", done: false },
+    ],
+  },
+  {
+    id: "elice-ai-challenge",
+    name: "과기부 × 엘리스 AI 챌린지",
+    host: "과학기술정보통신부 · 엘리스그룹",
+    url: "https://ai-challenge.elice.page/home/main",
+    category: "AI 문제 해결",
+    stage: "준비중",
+    summary: "일상 속 문제를 AI로 해결 (전국민 AI 경진대회)",
+    events: [
+      { title: "접수 마감", date: "2026-11-13" },
+      { title: "기획안·PoC 제출", date: "2026-11-14", end: "2026-11-22", time: "23:59" },
+      { title: "결과 발표·시상", date: "2026-12-11" },
+    ],
+    tasks: [
+      { title: "참가 신청서 작성", done: false },
+      { title: "기획안 작성", done: false },
+      { title: "PoC 제출", done: false },
+    ],
+  },
+  {
+    id: "hecto-ai-wallet",
+    name: "HAI! 헥토 AI × Wallet 챌린지",
+    host: "헥토그룹",
+    category: "AI",
+    stage: "제출완료",
+    notes: "공식 일정 미확인",
+    events: [],
+    tasks: [{ title: "결과물 제출", done: true }],
+  },
+];
