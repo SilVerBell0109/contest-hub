@@ -46,6 +46,20 @@
 ## 진행 상황
 - [x] 폴더 생성, git init
 - [x] 요구사항 확정, 대회 조사
-- [ ] 설계 문서 → 사용자 검토
-- [ ] 구현 계획(writing-plans)
-- [ ] 구현 / 테스트 / GitHub 저장소 / Vercel 배포
+- [x] 설계 문서 → 사용자 승인 (`docs/superpowers/specs/2026-11-06-contest-site-design.md`)
+- [x] 구현 계획 (`docs/superpowers/plans/2026-11-06-contest-hub.md`, 7개 작업)
+- [x] 구현 / 테스트(53개) / 작업별 리뷰 + 최종 리뷰 반영
+- [x] GitHub 공개 저장소: https://github.com/SilVerBell0109/contest-hub (main push = 자동 배포)
+- [x] Vercel 프로덕션 배포: https://contest-hub-khaki.vercel.app (2026-11-06)
+- [x] 브라우저 확인: 데스크톱·390px 폭에서 대시보드·달력·상세, 콘솔 오류 없음, /projects/nope 404
+
+## 운영
+- 데이터 변경: 사용자가 채팅으로 알려주면 `data/contests.ts` 수정 → `npm test` → commit/push → Vercel 자동 배포.
+- `GITHUB_TOKEN`은 Vercel에 넣지 않았다(연결 저장소 0개라 호출이 적음). GitHub 섹션이 자주 실패하면 Vercel 환경변수로 추가.
+
+## 남겨 둔 개선점 (배포 차단 아님)
+- 대시보드 "다가오는 일정"은 마운트 전 정적 HTML에 비어 있음(오늘 날짜를 클라이언트에서 계산하는 설계 결과). 필요하면 서버에서 D-day 없이 목록만 먼저 렌더.
+- 대회 색이 배열 순서 기준 → 중간 삽입 시 색이 바뀜.
+- 자정을 넘겨 탭을 열어 두면 D-day가 갱신되지 않음(새로고침으로 해결).
+- 모바일 달력 칩의 대회명이 짧게 잘림, 달력 이동 버튼 터치 영역 약 32px.
+- event.time 형식(HH:MM) 검사 없음.
