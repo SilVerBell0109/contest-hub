@@ -2,12 +2,19 @@
 
 import Link from "next/link";
 import type { Contest } from "@/lib/types";
-import { contestColor } from "@/lib/colors";
 import { formatKoreanDate, upcomingEvents } from "@/lib/date";
 import DDayBadge from "./DDayBadge";
 import { useToday } from "./useToday";
 
-export default function UpcomingList({ contests, limit = 8 }: { contests: Contest[]; limit?: number }) {
+export default function UpcomingList({
+  contests,
+  colors,
+  limit = 8,
+}: {
+  contests: Contest[];
+  colors: Record<string, string>;
+  limit?: number;
+}) {
   const today = useToday();
   if (today === null) {
     return <p className="text-sm text-muted">일정을 불러오는 중…</p>;
@@ -27,7 +34,7 @@ export default function UpcomingList({ contests, limit = 8 }: { contests: Contes
             <span
               aria-hidden
               className="h-8 w-1 shrink-0 rounded-full"
-              style={{ background: contestColor(contests.findIndex((c) => c.id === contest.id)) }}
+              style={{ background: colors[contest.id] }}
             />
             <span className="w-16 shrink-0">
               <DDayBadge event={event} />

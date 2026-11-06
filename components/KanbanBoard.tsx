@@ -1,7 +1,7 @@
 import { STAGES, type Contest } from "@/lib/types";
 import ContestCard from "./ContestCard";
 
-export default function KanbanBoard({ contests }: { contests: Contest[] }) {
+export default function KanbanBoard({ contests, colors }: { contests: Contest[]; colors: Record<string, string> }) {
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-5 sm:gap-3">
       {STAGES.map((stage) => {
@@ -21,7 +21,7 @@ export default function KanbanBoard({ contests }: { contests: Contest[] }) {
                   비어 있음
                 </p>
               ) : (
-                items.map((c) => <ContestCard key={c.id} contest={c} />)
+                items.map((c) => <ContestCard key={c.id} contest={c} color={colors[c.id]} />)
               )}
             </div>
           </section>

@@ -2,19 +2,15 @@
 
 import Link from "next/link";
 import type { Contest } from "@/lib/types";
-import { contests } from "@/lib/schema";
-import { contestColor } from "@/lib/colors";
 import { nextEvent, progress } from "@/lib/date";
 import DDayBadge from "./DDayBadge";
 import ProgressBar from "./ProgressBar";
 import { useToday } from "./useToday";
 
-export default function ContestCard({ contest }: { contest: Contest }) {
+export default function ContestCard({ contest, color }: { contest: Contest; color: string }) {
   const today = useToday();
-  const color = contestColor(contests.findIndex((c) => c.id === contest.id));
   const pct = progress(contest.tasks);
-  // 마운트 전에는 오늘을 모르므로 가장 이른 일정의 날짜만 보여 준다.
-  const next = today === null ? (contest.events[0] ? { event: contest.events[0] } : null) : nextEvent(contest, today);
+  const next = today === null ? null : nextEvent(contest, today);
 
   return (
     <Link
@@ -25,7 +21,9 @@ export default function ContestCard({ contest }: { contest: Contest }) {
       <h3 className="text-sm font-bold leading-snug">{contest.name}</h3>
       <p className="mt-0.5 text-xs text-muted">{contest.host}</p>
       <div className="mt-2 flex items-center gap-2 text-xs">
-        {next ? (
+        {today === null ? (
+          <span className="text-muted">다음 일정</span>
+        ) : next ? (
           <>
             <DDayBadge event={next.event} />
             <span className="truncate text-muted">{next.event.title}</span>
