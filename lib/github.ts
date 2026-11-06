@@ -20,12 +20,15 @@ export type RepoSummary = {
 
 const API = "https://api.github.com";
 
-async function ghFetch(path: string): Promise<unknown> {
+async function ghFetch(path: string, okStatuses: number[] = []): Promise<unknown> {
   const headers: Record<string, string> = { Accept: "application/vnd.github+json" };
   const token = process.env.GITHUB_TOKEN;
   if (token) headers.Authorization = `Bearer ${token}`;
   const res = await fetch(`${API}${path}`, { headers, next: { revalidate: 3600 } });
-  if (!res.ok) throw new Error(`GitHub ${res.status} ${path}`);
+  if (!res.ok) {
+    if (okStatuses.includes(res.status)) return null;
+    throw new Error(`GitHub ${res.status} ${path}`);
+  }
   return res.json();
 }
 
@@ -34,7 +37,8 @@ export async function getRepoActivity(repo: string): Promise<RepoActivity | null
   try {
     const [r, c]: any[] = await Promise.all([
       ghFetch(`/repos/${repo}`),
-      ghFetch(`/repos/${repo}/commits?per_page=5`),
+      // 409 = 빈 저장소(커밋 없음). 커밋 목록만 빈 배열로 취급한다.
+      ghFetch(`/repos/${repo}/commits?per_page=5`, [409]),
     ]);
     return {
       fullName: r.full_name,
@@ -42,7 +46,7 @@ export async function getRepoActivity(repo: string): Promise<RepoActivity | null
       stars: r.stargazers_count,
       openIssues: r.open_issues_count,
       pushedAt: r.pushed_at,
-      commits: c.slice(0, 5).map((x: any) => ({
+      commits: (c ?? []).slice(0, 5).map((x: any) => ({
         sha: x.sha,
         message: String(x.commit.message).split("\n")[0],
         date: x.commit.author.date,

@@ -35,7 +35,7 @@ export type EventStatus =
 export function eventStatus(e: ContestEvent, today: string): EventStatus {
   const end = e.end ?? e.date;
   if (today > end) return { kind: "past" };
-  if (today >= e.date && e.end) {
+  if (today >= e.date && e.end && e.end !== e.date) {
     return { kind: "ongoing", daysToEnd: daysBetween(today, e.end) };
   }
   return { kind: "upcoming", days: daysBetween(today, e.date) };

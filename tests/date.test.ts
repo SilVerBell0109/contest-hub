@@ -54,6 +54,17 @@ describe("eventStatus", () => {
   });
 });
 
+describe("end === date (single-day)", () => {
+  it("behaves exactly like an event without end", () => {
+    const same = { title: "x", date: "2026-11-20", end: "2026-11-20" };
+    const single = { title: "x", date: "2026-11-20" };
+    for (const today of ["2026-11-19", "2026-11-20", "2026-11-21"]) {
+      expect(eventStatus(same, today)).toEqual(eventStatus(single, today));
+    }
+    expect(ddayLabel(eventStatus(same, "2026-11-20"))).toBe("D-DAY");
+  });
+});
+
 describe("upcomingEvents", () => {
   const list = [
     c("empty", []),
@@ -74,6 +85,16 @@ describe("upcomingEvents", () => {
       "2026-11-06",
     );
     expect(r.map((i) => i.contest.id)).toEqual(["a", "b"]);
+  });
+});
+
+describe("upcomingEvents today ties", () => {
+  it("ongoing ranged and same-day single both key today; input order wins", () => {
+    const today = "2026-11-20";
+    const going = c("going", [{ title: "g", date: "2026-11-15", end: "2026-11-25" }]);
+    const single = c("single", [{ title: "s", date: today }]);
+    expect(upcomingEvents([going, single], today).map((i) => i.contest.id)).toEqual(["going", "single"]);
+    expect(upcomingEvents([single, going], today).map((i) => i.contest.id)).toEqual(["single", "going"]);
   });
 });
 

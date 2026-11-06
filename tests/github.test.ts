@@ -19,6 +19,7 @@ const commitsBody = [
   },
 ];
 
+const originalToken = process.env.GITHUB_TOKEN;
 beforeEach(() => {
   vi.spyOn(console, "warn").mockImplementation(() => {});
   delete process.env.GITHUB_TOKEN;
@@ -26,7 +27,8 @@ beforeEach(() => {
 afterEach(() => {
   vi.unstubAllGlobals();
   vi.restoreAllMocks();
-  delete process.env.GITHUB_TOKEN;
+  if (originalToken === undefined) delete process.env.GITHUB_TOKEN;
+  else process.env.GITHUB_TOKEN = originalToken;
 });
 
 function stubRepoFetch() {
@@ -79,6 +81,24 @@ describe("getRepoActivity", () => {
     vi.stubGlobal(
       "fetch",
       vi.fn(async (url: string) => (String(url).includes("/commits") ? fail(500) : ok(repoBody))),
+    );
+    expect(await getRepoActivity("o/r")).toBeNull();
+  });
+
+  it("treats 409 on commits (empty repository) as no commits", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (url: string) => (String(url).includes("/commits") ? fail(409) : ok(repoBody))),
+    );
+    expect(await getRepoActivity("o/r")).toEqual(
+      expect.objectContaining({ fullName: "SilVerBell0109/contest-hub", commits: [] }),
+    );
+  });
+
+  it("returns null on 409 for the repo request", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (url: string) => (String(url).includes("/commits") ? ok(commitsBody) : fail(409))),
     );
     expect(await getRepoActivity("o/r")).toBeNull();
   });

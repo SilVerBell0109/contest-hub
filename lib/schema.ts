@@ -15,7 +15,7 @@ const dateStr = z.string().refine(isRealDate, {
 });
 
 const eventSchema = z
-  .object({
+  .strictObject({
     title: z.string().min(1),
     date: dateStr,
     end: dateStr.optional(),
@@ -26,10 +26,10 @@ const eventSchema = z
     message: "end는 date보다 빠를 수 없습니다",
   });
 
-const taskSchema = z.object({ title: z.string().min(1), done: z.boolean() });
+const taskSchema = z.strictObject({ title: z.string().min(1), done: z.boolean() });
 
 const contestSchema = z
-  .object({
+  .strictObject({
     id: z.string().min(1),
     name: z.string().min(1),
     host: z.string().min(1),

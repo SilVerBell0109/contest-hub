@@ -45,4 +45,11 @@ describe("parseContests", () => {
   it("알 수 없는 stage 거부", () => {
     expect(() => one({ stage: "없음" })).toThrow();
   });
+  it("오타 키(prise)는 unrecognized로 거부", () => {
+    expect(() => one({ prise: "100만원" })).toThrow(/- \[a-b\] contests\[0\].*(prise|nrecognized)/);
+  });
+  it("event/task의 알 수 없는 키도 거부", () => {
+    expect(() => one({ events: [{ title: "x", date: "2026-11-12", tiem: "10:00" }] })).toThrow(/unrecognized|Unrecognized/i);
+    expect(() => one({ tasks: [{ title: "x", done: false, dnoe: true }] })).toThrow(/unrecognized|Unrecognized/i);
+  });
 });
