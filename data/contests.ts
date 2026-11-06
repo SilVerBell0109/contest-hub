@@ -64,7 +64,7 @@ export const rawContests = [
     name: "HAI! 헥토 AI × Wallet 챌린지",
     host: "헥토그룹 · 데이콘",
     category: "AI",
-    stage: "제출완료",
+    stage: "준비중",
     summary: "Octet API·오하이월렛을 활용한 월렛 기반 AI 웹서비스와 비즈니스 모델",
     prize: "총 2,600만 원",
     notes: "접수 기간 10/26~12/21. 세부 일정·제출 양식은 데이콘 대회 페이지 규칙 탭에서 확인 필요",
@@ -72,7 +72,7 @@ export const rawContests = [
     tasks: [
       { title: "헥토패스(외국인 수납) 기획서 PDF", done: true },
       { title: "헥토고(교통) 기획서 PDF", done: true },
-      { title: "결과물 제출", done: true },
+      { title: "결과물 제출", done: false },
     ],
   },
   {
