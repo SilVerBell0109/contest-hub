@@ -62,17 +62,23 @@ export const rawContests = [
   {
     id: "hecto-ai-wallet",
     name: "HAI! 헥토 AI × Wallet 챌린지",
-    host: "헥토그룹 · 데이콘",
+    host: "헥토(Hecto) · DAKER",
+    url: "https://daker.ai/public/hackathons/2026-hai-hecto-ai-challenge",
     category: "AI",
     stage: "준비중",
     summary: "Octet API·오하이월렛을 활용한 월렛 기반 AI 웹서비스와 비즈니스 모델",
     prize: "총 2,600만 원",
-    notes: "접수 기간 10/26~12/21. 세부 일정·제출 양식은 데이콘 대회 페이지 규칙 탭에서 확인 필요",
-    events: [{ title: "접수 마감", date: "2026-12-21" }],
+    notes: "참가 신청(10/26~10/29)과 팀 구성 완료. 상세 일정은 주최 측이 확정 후 안내 예정",
+    events: [
+      { title: "예선 기획서 제출 마감", date: "2026-12-21", time: "10:00" },
+      { title: "평가 마감", date: "2026-12-25", time: "10:00" },
+      { title: "대회 종료", date: "2027-02-19", time: "18:00" },
+    ],
     tasks: [
+      { title: "참가 신청·팀 구성", done: true },
       { title: "헥토패스(외국인 수납) 기획서 PDF", done: true },
       { title: "헥토고(교통) 기획서 PDF", done: true },
-      { title: "결과물 제출", done: false },
+      { title: "예선 기획서 제출", done: false },
     ],
   },
   {

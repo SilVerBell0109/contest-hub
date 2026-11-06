@@ -14,8 +14,10 @@ describe("contests data", () => {
       "jeju-ai-agent",
     ]);
   });
-  it("hecto-ai-wallet 접수 마감 12/21", () => {
-    expect(getContest("hecto-ai-wallet")?.events.map((e) => e.date)).toEqual(["2026-12-21"]);
+  it("hecto-ai-wallet 예선 기획서 마감 12/21", () => {
+    expect(getContest("hecto-ai-wallet")?.events.map((e) => e.date)).toEqual([
+      "2026-12-21", "2026-12-25", "2027-02-19",
+    ]);
   });
   it("kic 마지막 일정", () => {
     const e = getContest("kic-ai-agent")!.events;
