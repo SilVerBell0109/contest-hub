@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f2f4f1;
+  --surface: #fbfcfa;
+  --ink: #16211d;
+  --muted: #5d6b65;
+  --line: #d5dbd6;
+  --accent: #d6361f;
+  --accent-ink: #ffffff;
+  --track: #dfe5e0;
+  --fill: #1f6f5a;
+  --c-0: #1f6f5a;
+  --c-1: #3a5fcd;
+  --c-2: #a45a18;
+  --c-3: #8e3fa8;
+  --c-4: #0d7790;
+  --c-5: #a8324f;
+  --c-6: #657419;
+  --c-7: #5b5f8f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #101613;
+    --surface: #18201c;
+    --ink: #e8eee9;
+    --muted: #9aa8a1;
+    --line: #2d3832;
+    --accent: #ff6a4d;
+    --accent-ink: #1a0a06;
+    --track: #2a3530;
+    --fill: #4fc2a0;
+    --c-0: #4fc2a0;
+    --c-1: #7c9bf0;
+    --c-2: #e59a52;
+    --c-3: #c98ae0;
+    --c-4: #4cc3dd;
+    --c-5: #ec7f9a;
+    --c-6: #b3c552;
+    --c-7: #9a9fd6;
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-noto), "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  word-break: keep-all;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
