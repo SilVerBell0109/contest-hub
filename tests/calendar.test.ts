@@ -6,7 +6,7 @@ describe("eventsByDate", () => {
   it("2026-11: 상호평가 spans 11/12~11/19 (8 dates)", () => {
     const map = eventsByDate(contests, 2026, 11);
     const dates = Object.keys(map).filter((d) =>
-      map[d].some((x) => x.event.title.includes("상호평가")),
+      map[d].some((x) => x.contest.id === "kic-ai-agent" && x.event.title.includes("상호평가")),
     );
     expect(dates.sort()).toEqual([
       "2026-11-12", "2026-11-13", "2026-11-14", "2026-11-15",
