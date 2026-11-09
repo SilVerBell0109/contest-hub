@@ -42,6 +42,12 @@ describe("parseContests", () => {
     expect(() => one({ url: "not a url" })).toThrow();
     expect(() => one({ url: "https://example.com" })).not.toThrow();
   });
+  it("files path는 /files/대회id/파일명 (영문·숫자)", () => {
+    expect(() => one({ files: [{ title: "기획서", path: "/files/a-b/proposal.pdf" }] })).not.toThrow();
+    expect(() => one({ files: [{ title: "기획서", path: "files/a-b/proposal.pdf" }] })).toThrow();
+    expect(() => one({ files: [{ title: "기획서", path: "/files/a-b/기획서.pdf" }] })).toThrow();
+    expect(() => one({ files: [{ title: "", path: "/files/a-b/proposal.pdf" }] })).toThrow();
+  });
   it("알 수 없는 stage 거부", () => {
     expect(() => one({ stage: "없음" })).toThrow();
   });

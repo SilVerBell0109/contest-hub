@@ -28,6 +28,13 @@ const eventSchema = z
 
 const taskSchema = z.strictObject({ title: z.string().min(1), done: z.boolean() });
 
+const fileSchema = z.strictObject({
+  title: z.string().min(1),
+  path: z
+    .string()
+    .regex(/^\/files\/[\w.-]+\/[\w.-]+$/, "path는 /files/대회id/파일명 형식(영문·숫자)이어야 합니다"),
+});
+
 const contestSchema = z
   .strictObject({
     id: z.string().min(1),
@@ -46,6 +53,7 @@ const contestSchema = z
       .string()
       .regex(/^[\w.-]+\/[\w.-]+$/, "repo는 owner/name 형식이어야 합니다")
       .optional(),
+    files: z.array(fileSchema).optional(),
     notes: z.string().optional(),
   })
   .refine((c) => c.result === undefined || c.stage === "종료", {

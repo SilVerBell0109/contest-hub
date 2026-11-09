@@ -30,6 +30,9 @@ Next.js(App Router) · TypeScript · Tailwind CSS · zod · vitest, Vercel 배�
   ],
   tasks: [{ title: "기획서 작성", done: false }],
   repo: "SilVerBell0109/저장소", // 선택: 상세 페이지에 최근 커밋 표시
+  files: [                   // 선택: 제출물. 파일은 public/files/<id>/ 에 영문 이름으로 둔다
+    { title: "기획서 (PDF)", path: "/files/<id>/proposal.pdf" },
+  ],
   notes: "메모",              // 선택
 }
 ```

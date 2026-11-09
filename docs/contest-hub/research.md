@@ -55,6 +55,7 @@
 
 ## 운영
 - 데이터 변경: 사용자가 채팅으로 알려주면 `data/contests.ts` 수정 → `npm test` → commit/push → Vercel 자동 배포.
+- 제출물 파일(2026-11-09 추가): `public/files/<대회 id>/`에 영문 파일명으로 복사하고 `data/contests.ts`의 `files: [{ title, path }]`에 적으면 상세 페이지 "제출물" 섹션에 링크가 뜬다. 공개 저장소·공개 사이트라 올리기 전에 비밀키·연락처가 없는지 확인한다. 현재 제주 2개(기획서 PDF, 결과물 zip 16MB), KIC 1개(기획서 PDF).
 - `GITHUB_TOKEN`은 Vercel에 넣지 않았다(연결 저장소 0개라 호출이 적음). GitHub 섹션이 자주 실패하면 Vercel 환경변수로 추가.
 
 ## 남겨 둔 개선점 (배포 차단 아님)

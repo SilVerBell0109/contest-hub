@@ -10,6 +10,11 @@ export type ContestEvent = {
 
 export type Task = { title: string; done: boolean };
 
+export type ContestFile = {
+  title: string;
+  path: string; // /files/<대회 id>/<파일명>, 실제 파일은 public/ 아래
+};
+
 export type Contest = {
   id: string;
   name: string;
@@ -24,5 +29,6 @@ export type Contest = {
   events: ContestEvent[];
   tasks: Task[];
   repo?: string;
+  files?: ContestFile[];
   notes?: string;
 };

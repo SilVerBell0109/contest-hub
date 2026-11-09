@@ -90,6 +90,21 @@ export default async function ProjectPage({ params }: Props) {
         )}
       </section>
 
+      {c.files && c.files.length > 0 && (
+        <section aria-labelledby="files" className="mb-8">
+          <h2 id="files" className="mb-3 text-2xl font-black tracking-tight">제출물</h2>
+          <ul className="divide-y divide-line border-y border-line">
+            {c.files.map((f) => (
+              <li key={f.path} className="py-2 text-sm">
+                <a href={f.path} target="_blank" rel="noopener noreferrer" className="underline">
+                  {f.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       {c.notes && (
         <section aria-labelledby="notes" className="mb-8">
           <h2 id="notes" className="mb-3 text-2xl font-black tracking-tight">메모</h2>

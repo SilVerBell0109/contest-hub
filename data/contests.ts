@@ -21,6 +21,9 @@ export const rawContests = [
       { title: "본선 결과물 제출", done: false },
       { title: "온라인 발표", done: false },
     ],
+    files: [
+      { title: "Holdings Sentinel 예선 기획서 (PDF)", path: "/files/kic-ai-agent/holdings-sentinel-proposal.pdf" },
+    ],
   },
   {
     id: "hana-finance-idea",
@@ -92,7 +95,7 @@ export const rawContests = [
     host: "제주테크노파크 · DAKER",
     url: "https://daker.ai/public/hackathons/jeju-ai-bigdata-agent-challenge",
     category: "AI 에이전트",
-    stage: "준비중",
+    stage: "제출완료",
     summary: "상권·소비 분석 보고서 에이전트 + 반출 기준 자동 검수",
     prize: "대상 300만 원 · 최우수 100만 원 · 우수 50만 원(2팀)",
     notes: "제주빅데이터센터·제주데이터허브 데이터 1종 이상 필수. 평가는 전문가 70% + 상호 평가 30%(기획서 PDF만 봄). 상호 평가 최소 투표 수를 못 채우면 내가 받은 표도 미반영. 제출 후 수정 불가",
@@ -104,10 +107,14 @@ export const rawContests = [
     ],
     tasks: [
       { title: "주제 확정", done: true },
-      { title: "에이전트 구현 (7단계 중 3단계 진행 중)", done: false },
-      { title: "기획서 PDF (15쪽 이내)", done: false },
-      { title: "결과물 zip (코드·README·매뉴얼·데이터 명세·결과 설명)", done: false },
+      { title: "에이전트 구현", done: true },
+      { title: "기획서 PDF (15쪽 이내)", done: true },
+      { title: "결과물 zip (코드·README·매뉴얼·데이터 명세·결과 설명)", done: true },
       { title: "상호 평가 참여", done: false },
+    ],
+    files: [
+      { title: "제주 상권 나침반 기획서 (PDF)", path: "/files/jeju-ai-agent/jeju-compass-proposal.pdf" },
+      { title: "최종 결과물 (zip)", path: "/files/jeju-ai-agent/jeju-compass-final.zip" },
     ],
   },
 ];
