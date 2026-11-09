@@ -82,28 +82,6 @@ export const rawContests = [
     ],
   },
   {
-    id: "ax-talent-war",
-    name: "AX인재전쟁 온라인 1회차",
-    host: "삼일PwC 출제 · 조코딩AX파트너스 운영",
-    url: "https://jocodingax.ai/blog/samil-pwc-ax-talent-war-online",
-    category: "AI 프로덕트 개발",
-    stage: "준비중",
-    summary: "AI 도구로 일주일 동안 프로덕트를 만들어 AXHub에 배포 (채용 연계)",
-    notes: "프롬프트 기록도 평가에 들어감 — 개발 시작 전 AXHub 플러그인 로깅 필수. 상위 최대 40명 면접, 1~9명 채용 예정",
-    events: [
-      { title: "문제 공개", date: "2026-11-09", time: "00:00" },
-      { title: "결과물 제출 마감", date: "2026-11-15", time: "23:59" },
-      { title: "상위 40명 면접", date: "2026-11-23" },
-    ],
-    tasks: [
-      { title: "참가 신청", done: true },
-      { title: "자료 조사", done: true },
-      { title: "AXHub 플러그인 프롬프트 로깅 켜기", done: false },
-      { title: "프로덕트 개발·AXHub 배포", done: false },
-      { title: "설명·소개 영상 제출", done: false },
-    ],
-  },
-  {
     id: "hyundai-vehicle-app",
     name: "현대자동차그룹 차량용 앱 개발 공모전",
     host: "현대자동차그룹 (Pleos)",
