@@ -41,25 +41,6 @@ export const rawContests = [
     ],
   },
   {
-    id: "elice-ai-challenge",
-    name: "과기부 × 엘리스 AI 챌린지",
-    host: "과학기술정보통신부 · 엘리스그룹",
-    url: "https://ai-challenge.elice.page/home/main",
-    category: "AI 문제 해결",
-    stage: "준비중",
-    summary: "일상 속 문제를 AI로 해결 (전국민 AI 경진대회)",
-    events: [
-      { title: "접수 마감", date: "2026-11-13" },
-      { title: "기획안·PoC 제출", date: "2026-11-14", end: "2026-11-22", time: "23:59" },
-      { title: "결과 발표·시상", date: "2026-12-11" },
-    ],
-    tasks: [
-      { title: "참가 신청서 작성", done: false },
-      { title: "기획안 작성", done: false },
-      { title: "PoC 제출", done: false },
-    ],
-  },
-  {
     id: "hecto-ai-wallet",
     name: "HAI! 헥토 AI × Wallet 챌린지",
     host: "헥토(Hecto) · DAKER",

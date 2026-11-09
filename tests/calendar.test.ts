@@ -14,12 +14,12 @@ describe("eventsByDate", () => {
     ]);
   });
 
-  it("2026-12: two events on 12/11 (hana + elice)", () => {
+  it("2026-12: two events on 12/03 (kic + hyundai)", () => {
     const map = eventsByDate(contests, 2026, 12);
-    const ids = map["2026-12-11"].map((x) => x.contest.id);
+    const ids = map["2026-12-03"].map((x) => x.contest.id);
     expect(ids).toHaveLength(2);
-    expect(ids.some((i) => i.includes("hana"))).toBe(true);
-    expect(ids.some((i) => i.includes("elice"))).toBe(true);
+    expect(ids.some((i) => i.includes("kic"))).toBe(true);
+    expect(ids.some((i) => i.includes("hyundai"))).toBe(true);
   });
 
   it("2027-01: has 01-11", () => {

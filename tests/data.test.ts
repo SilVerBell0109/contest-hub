@@ -2,12 +2,11 @@ import { describe, expect, it } from "vitest";
 import { contests, getContest } from "@/lib/schema";
 
 describe("contests data", () => {
-  it("6건, id 순서", () => {
-    expect(contests.length).toBe(6);
+  it("5건, id 순서", () => {
+    expect(contests.length).toBe(5);
     expect(contests.map((c) => c.id)).toEqual([
       "kic-ai-agent",
       "hana-finance-idea",
-      "elice-ai-challenge",
       "hecto-ai-wallet",
       "hyundai-vehicle-app",
       "jeju-ai-agent",
