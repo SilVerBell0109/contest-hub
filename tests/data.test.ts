@@ -4,15 +4,21 @@ import { describe, expect, it } from "vitest";
 import { contests, getContest } from "@/lib/schema";
 
 describe("contests data", () => {
-  it("5건, id 순서", () => {
-    expect(contests.length).toBe(5);
+  it("6건, id 순서", () => {
+    expect(contests.length).toBe(6);
     expect(contests.map((c) => c.id)).toEqual([
       "kic-ai-agent",
       "hana-finance-idea",
       "hecto-ai-wallet",
       "hyundai-vehicle-app",
       "jeju-ai-agent",
+      "kisti-aida-2027",
     ]);
+  });
+  it("kisti 문제발굴 11/14 제출완료", () => {
+    const c = getContest("kisti-aida-2027")!;
+    expect(c.stage).toBe("제출완료");
+    expect(c.events.map((e) => e.date)).toEqual(["2026-11-14"]);
   });
   it("hecto-ai-wallet 예선 기획서 마감 12/21", () => {
     expect(getContest("hecto-ai-wallet")?.events.map((e) => e.date)).toEqual([
